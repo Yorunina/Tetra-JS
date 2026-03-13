@@ -38,7 +38,7 @@ legacyForge {
     }
 
     // This line is optional. Access Transformers are automatically detected
-    // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
+//     accessTransformers = project.files('src/main/templates/META-INF/accesstransformer.cfg')
 
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
@@ -136,7 +136,7 @@ dependencies {
     }
     //tetra
     modImplementation("curse.maven:mutil-351914:6418901")
-    modImplementation("curse.maven:tetra-289712:6418957")
+    modImplementation("curse.maven:tetra-289712:7636468")
     //kjs
     modImplementation("curse.maven:rhino-416294:6186971")
     modImplementation("curse.maven:architectury-api-419699:5137938")

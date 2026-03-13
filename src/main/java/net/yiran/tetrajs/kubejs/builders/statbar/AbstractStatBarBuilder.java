@@ -157,7 +157,7 @@ public abstract class AbstractStatBarBuilder<THIS extends IStatBarBuilder<?>> im
                 extendStatGetters.toArray(new IStatGetter[0])
         ));
         result.setIndicators(statIndicators.toArray(new GuiStatIndicator[0]));
-        return  result;
+        return result;
     }
 
     public enum LABELS {

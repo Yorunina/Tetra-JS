@@ -43,7 +43,6 @@ public class TetraJS {
             modEventBus.addListener(TetraJSClient::onClientSetup);
         }
         modEventBus.addListener(EventPriority.LOWEST, this::onCommonSetup);
-        CompatManager.init(modEventBus);
     }
 
     public void onCommonSetup(final FMLCommonSetupEvent event) {

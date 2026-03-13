@@ -1,6 +1,7 @@
 package net.yiran.tetrajs.api;
 
 import dev.latvian.mods.kubejs.typings.Info;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import se.mickelus.tetra.aspect.ItemAspect;
 import se.mickelus.tetra.data.DataManager;
@@ -25,6 +26,11 @@ public class TetraJSUtils {
                 .map(OutcomeMaterial::getPredicate)
                 .filter(Objects::nonNull)
                 .anyMatch(itemPredicate -> itemPredicate.matches(stack));
+    }
+
+    @Info("检测一个物品是否为tetra工具")
+    public boolean isModularItem(Item item) {
+        return item instanceof IModularItem;
     }
 
     @Info("获取改进等级,不存在则返回-1")
@@ -88,6 +94,5 @@ public class TetraJSUtils {
         }
         return false;
     }
-
 
 }

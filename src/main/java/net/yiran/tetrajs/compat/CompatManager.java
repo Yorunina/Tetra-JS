@@ -2,15 +2,10 @@ package net.yiran.tetrajs.compat;
 
 import dev.latvian.mods.kubejs.registry.RegistryInfo;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
-import net.yiran.tetra_addition.TetraAddition;
-import net.yiran.tetrajs.TetraJS;
 import net.yiran.tetrajs.compat.curios.CuriosHelper;
 import net.yiran.tetrajs.compat.curios.builders.items.CuriosModularItemBuilder;
 import net.yiran.tetrajs.compat.curios.builders.items.DynamicCuriosModularItemBuilder;
-import net.yiran.tetrajs.kubejs.events.WorkbenchTileCraftEventJS;
 import top.theillusivec4.curios.Curios;
 
 import java.util.function.BiConsumer;

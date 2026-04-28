@@ -19,7 +19,7 @@ public class HammerHeadBlockMixin {
     @Inject(method = "onCraftConsumeTool", at = @At("HEAD"), cancellable = true)
     private void onCraftConsumeTool(Level world, BlockPos pos, BlockState blockState, ItemStack targetStack, String slot, boolean isReplacing, Player player, ToolAction requiredTool, int requiredLevel, boolean consumeResources, CallbackInfoReturnable<ItemStack> cir){
         if (world.isClientSide) return;
-        if (TetraJSEvents.hammerBlockCraftConsumeTool.post(
+        if (TetraJSEvents.HammerBlockCraftConsumeTool.post(
                 new HammerBlockCraftConsumeToolJS(world, pos, blockState, (HammerHeadBlock) (Object) this, targetStack, player, requiredTool, requiredLevel, consumeResources)).interruptFalse()) {
             cir.setReturnValue(targetStack);
         }

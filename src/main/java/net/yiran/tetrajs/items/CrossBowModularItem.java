@@ -14,17 +14,17 @@ import net.yiran.tetrajs.api.ShowModelHelper;
 import net.yiran.tetrajs.util.SlotData;
 import se.mickelus.mutil.network.PacketHandler;
 import se.mickelus.tetra.gui.GuiModuleOffsets;
-import se.mickelus.tetra.items.modular.impl.crossbow.ModularCrossbowItem;
+import se.mickelus.tetra.items.modular.impl.crossbow.ModularCrossbowItemImpl;
 import se.mickelus.tetra.module.SchematicRegistry;
-import se.mickelus.tetra.module.data.ModuleModel;
 import se.mickelus.tetra.module.data.SynergyData;
+import se.mickelus.tetra.module.model.IModuleModel;
 import se.mickelus.tetra.module.schematic.RepairSchematic;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class CrossBowModularItem extends ModularCrossbowItem implements ITetraJSItem {
+public class CrossBowModularItem extends ModularCrossbowItemImpl implements ITetraJSItem {
     public GuiModuleOffsets majorOffsets;
     public GuiModuleOffsets minorOffsets;
     public String[] synergiesPath;
@@ -96,7 +96,7 @@ public class CrossBowModularItem extends ModularCrossbowItem implements ITetraJS
     }
 
     @OnlyIn(Dist.CLIENT)
-    public ImmutableList<ModuleModel> getModels(ItemStack itemStack, @Nullable LivingEntity entity) {
+    public ImmutableList<IModuleModel> getModels(ItemStack itemStack, @Nullable LivingEntity entity) {
         return ShowModelHelper.getModels(itemStack, entity, this::getSynergyData, this::getAllModules,this.getDrawVariant(itemStack, entity));
     }
 

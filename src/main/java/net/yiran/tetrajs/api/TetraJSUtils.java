@@ -1,17 +1,22 @@
 package net.yiran.tetrajs.api;
 
 import dev.latvian.mods.kubejs.typings.Info;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import se.mickelus.tetra.TetraMod;
 import se.mickelus.tetra.aspect.ItemAspect;
+import se.mickelus.tetra.blocks.scroll.ScrollData;
+import se.mickelus.tetra.blocks.scroll.ScrollItem;
 import se.mickelus.tetra.data.DataManager;
 import se.mickelus.tetra.items.modular.IModularItem;
 import se.mickelus.tetra.module.ItemModule;
 import se.mickelus.tetra.module.ItemModuleMajor;
 import se.mickelus.tetra.module.schematic.OutcomeMaterial;
-
-import java.util.Objects;
-import java.util.Set;
 
 public class TetraJSUtils {
     public static TetraJSUtils INSTANCE = new TetraJSUtils();
@@ -95,4 +100,15 @@ public class TetraJSUtils {
         return false;
     }
 
+
+    public ItemStack setupScrollData(String key, String details, String[] schematics, String[] craftEffects, boolean isIntricate, int material, int tint, int[] glyphs) {
+        ScrollData data = new ScrollData(key, Optional.ofNullable(details), isIntricate, material, tint, Arrays.stream(glyphs).boxed().collect(Collectors.toList()),
+                Arrays.stream(schematics).map(s -> new ResourceLocation(TetraMod.MOD_ID, s))
+                        .collect(Collectors.toList()),
+                Arrays.stream(craftEffects).map(s -> new ResourceLocation(TetraMod.MOD_ID, s))
+                        .collect(Collectors.toList()));
+        ItemStack itemStack = new ItemStack(ScrollItem.instance);
+        data.write(itemStack);
+        return itemStack;
+    }
 }

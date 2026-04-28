@@ -17,6 +17,7 @@ public class WorkbenchTileCraftEventJS extends EventJS {
     public ItemStack[] materialsAltered;
     public UpgradeSchematic currentSchematic;
     public String currentSlot;
+    private boolean itemModified = false;
 
     public WorkbenchTileCraftEventJS(
             ItemStack targetStack,
@@ -73,5 +74,13 @@ public class WorkbenchTileCraftEventJS extends EventJS {
 
     public String getCurrentSlot() {
         return currentSlot;
+    }
+
+    public void setUpgradedStack(ItemStack upgradedStack) {
+        this.upgradedStack = upgradedStack;
+        this.itemModified = true;
+    }
+    public boolean isItemModified() {
+        return this.itemModified;
     }
 }

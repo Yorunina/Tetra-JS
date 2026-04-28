@@ -18,7 +18,7 @@ import se.mickelus.tetra.data.DataManager;
 import se.mickelus.tetra.gui.GuiModuleOffsets;
 import se.mickelus.tetra.items.modular.ItemModularHandheld;
 import se.mickelus.tetra.module.SchematicRegistry;
-import se.mickelus.tetra.module.data.ModuleModel;
+import se.mickelus.tetra.module.model.IModuleModel;
 import se.mickelus.tetra.module.data.SynergyData;
 import se.mickelus.tetra.module.schematic.RepairSchematic;
 
@@ -123,7 +123,7 @@ public class DynamicModularItem extends ItemModularHandheld {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public ImmutableList<ModuleModel> getModels(ItemStack itemStack, @Nullable LivingEntity entity) {
+    public ImmutableList<IModuleModel> getModels(ItemStack itemStack, @Nullable LivingEntity entity) {
         return ShowModelHelper.getModels(itemStack, entity, this::getSynergyData, this::getAllModules);
     }
 

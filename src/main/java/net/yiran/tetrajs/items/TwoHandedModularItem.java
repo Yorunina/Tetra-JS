@@ -19,7 +19,7 @@ import se.mickelus.mutil.network.PacketHandler;
 import se.mickelus.tetra.gui.GuiModuleOffsets;
 import se.mickelus.tetra.items.modular.ItemModularHandheld;
 import se.mickelus.tetra.module.SchematicRegistry;
-import se.mickelus.tetra.module.data.ModuleModel;
+import se.mickelus.tetra.module.model.IModuleModel;
 import se.mickelus.tetra.module.data.SynergyData;
 import se.mickelus.tetra.module.schematic.RepairSchematic;
 import se.mickelus.tetra.properties.AttributeHelper;
@@ -106,8 +106,8 @@ public class TwoHandedModularItem extends ItemModularHandheld implements ITetraJ
         return synergiesPath;
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public ImmutableList<ModuleModel> getModels(ItemStack itemStack, @Nullable LivingEntity entity) {
+     @OnlyIn(Dist.CLIENT)
+    public ImmutableList<IModuleModel> getModels(ItemStack itemStack, @Nullable LivingEntity entity) {
         return ShowModelHelper.getModels(itemStack, entity, this::getSynergyData, this::getAllModules);
     }
 

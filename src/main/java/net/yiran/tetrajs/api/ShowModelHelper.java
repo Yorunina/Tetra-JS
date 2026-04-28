@@ -10,7 +10,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import se.mickelus.tetra.items.modular.IModularItem;
 import se.mickelus.tetra.module.ItemModule;
-import se.mickelus.tetra.module.data.ModuleModel;
+import se.mickelus.tetra.module.model.IModuleModel;
 import se.mickelus.tetra.module.data.SynergyData;
 
 import javax.annotation.Nullable;
@@ -59,7 +59,7 @@ public class ShowModelHelper {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static ImmutableList<ModuleModel> getModels(ItemStack itemStack, @Nullable LivingEntity entity,
+    public static ImmutableList<IModuleModel> getModels(ItemStack itemStack, @Nullable LivingEntity entity,
                                                        Function<ItemStack, SynergyData[]> getSynergyData, Function<ItemStack, Collection<ItemModule>> getAllModules,
                                                        String... defaultShowModels
     ) {
@@ -77,8 +77,8 @@ public class ShowModelHelper {
                                 .flatMap(itemModule -> Arrays.stream(itemModule.getModels(itemStack)))
                 )
                 .filter(Objects::nonNull)
-                .filter(moduleModel -> showModelTypes.isEmpty() || showModelTypes.contains(moduleModel.type))
-                .sorted(Comparator.comparing(ModuleModel::getRenderLayer))
+                .filter(moduleModel -> showModelTypes.isEmpty() || showModelTypes.contains(moduleModel.getType().toString()))
+                .sorted(Comparator.comparing(IModuleModel::getRenderLayer))
                 .collect(Collectors.collectingAndThen(Collectors.toList(), ImmutableList::copyOf));
     }
 }

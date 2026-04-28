@@ -9,6 +9,8 @@
     "HammerHeadBlockMixin",
     "ItemAspectMixin",
     "ItemEffectMixin",
+    "ModularBowItemMixin",
+    "ModularCrossbowItemMixin",
     "WorkbenchTileMixin"
   ],
   "client": [

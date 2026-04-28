@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 import se.mickelus.tetra.TetraMod;
 import se.mickelus.tetra.items.InitializableItem;
 import se.mickelus.tetra.items.modular.impl.bow.ModularBowItem;
-import se.mickelus.tetra.items.modular.impl.crossbow.ModularCrossbowItem;
+import se.mickelus.tetra.items.modular.impl.crossbow.ModularCrossbowItemImpl;
 import se.mickelus.tetra.items.modular.impl.shield.ModularShieldItem;
 import se.mickelus.tetra.module.SchematicRegistry;
 import se.mickelus.tetra.module.schematic.RepairSchematic;
@@ -55,7 +55,7 @@ public class TetraJS {
         TetraJSEvents.EnchantAspectRegister.post(new EnchantAspectRegisterEventJS());
         SchematicRegistry.instance.registerSchematic(new RepairSchematic(ModularShieldItem.instance, "modular_shield"));
         SchematicRegistry.instance.registerSchematic(new RepairSchematic(ModularBowItem.instance, "modular_bow"));
-        SchematicRegistry.instance.registerSchematic(new RepairSchematic(ModularCrossbowItem.instance, "modular_crossbow"));
+        SchematicRegistry.instance.registerSchematic(new RepairSchematic(ModularCrossbowItemImpl.instance, "modular_crossbow"));
 
     }
 

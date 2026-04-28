@@ -14,8 +14,7 @@ import net.yiran.tetrajs.util.NbtSlotData;
 import se.mickelus.tetra.aspect.ItemAspect;
 import se.mickelus.tetra.data.DataManager;
 import se.mickelus.tetra.effect.ItemEffect;
-import se.mickelus.tetra.gui.stats.bar.GuiStatIndicator;
-import se.mickelus.tetra.items.modular.IModularItem;
+import se.mickelus.tetra.items.modular.ItemModularHandheld;
 import se.mickelus.tetra.module.SchematicRegistry;
 
 public class TetraJSPlugin extends KubeJSPlugin {
@@ -54,6 +53,7 @@ public class TetraJSPlugin extends KubeJSPlugin {
         addTetraJSBinding(event, "ShowModelHelper", ShowModelHelper.INSTANCE);
         addTetraJSBinding(event, "LangUtils", LangUtils.INSTANCE);
         addTetraJSBinding(event, "SchematicUtils", SchematicUtils.INSTANCE);
+        addTetraJSBinding(event, "ItemModularHandheld", ItemModularHandheld.class);
         CompatManager.registerCompatBindings((name, value) -> addTetraJSBinding(event, name, value));
     }
 

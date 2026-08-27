@@ -136,7 +136,7 @@ dependencies {
     }
     //tetra
     modImplementation("curse.maven:mutil-351914:7772906")
-    modImplementation("curse.maven:tetra-289712:8388387")
+    modImplementation("curse.maven:tetra-289712:8087612")
     //kjs
     modImplementation("curse.maven:rhino-416294:6186971")
     modImplementation("curse.maven:architectury-api-419699:5137938")

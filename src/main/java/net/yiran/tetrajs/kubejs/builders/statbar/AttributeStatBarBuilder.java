@@ -50,7 +50,7 @@ public class AttributeStatBarBuilder extends AbstractStatBarBuilder<AttributeSta
         if (getStatGetter() == null) {
             IStatGetter attributeStatGetter = switch (type) {
                 case COMMON -> new StatGetterAttribute(attribute, ignoreBase, ignoreBonuses, offset);
-                case ADDITION -> new StatGetterAttributeAddition(attribute);
+                case ADDITION -> new StatGetterAttributeAddition(attribute, true, false);
                 case MULTIPLY -> StatBarHelper.INSTANCE.attributeMultiply(attribute);
             };
             if (multiplier != 1) {

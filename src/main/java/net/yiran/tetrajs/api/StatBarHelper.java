@@ -70,11 +70,11 @@ public class StatBarHelper {
     }
 
     public IStatGetter attributeAddition(Attribute attribute) {
-        return new StatGetterAttributeAddition(attribute);
+        return new StatGetterAttributeAddition(attribute, true, false);
     }
 
     public IStatGetter attributeMultiply(Attribute attribute) {
-        return sum(-1, new StatGetterAttributeMultiply(attribute));
+        return sum(-1, new StatGetterAttributeMultiply(attribute, false));
     }
 
     public IStatGetter integrity() {

@@ -11,6 +11,8 @@ import net.yiran.tetrajs.compat.CompatManager;
 import net.yiran.tetrajs.kubejs.builders.items.*;
 import net.yiran.tetrajs.kubejs.events.TetraJSEvents;
 import net.yiran.tetrajs.util.NbtSlotData;
+import net.yiran.tetrajs.crafteffect.CustomCraftingEffectOutcome;
+import net.yiran.tetrajs.requirements.CustomRequirement;
 import se.mickelus.tetra.aspect.ItemAspect;
 import se.mickelus.tetra.data.DataManager;
 import se.mickelus.tetra.effect.ItemEffect;
@@ -46,20 +48,19 @@ public class TetraJSPlugin extends KubeJSPlugin {
         event.add("TetraSchematicRegistry", SchematicRegistry.class);
         event.add("TetraJSUtils", TetraJSUtils.INSTANCE);
         event.add("ShowModelHelper", ShowModelHelper.INSTANCE);
-        addTetraJSBinding(event, "DynamicModularHelper", DynamicModularHelper.INSTANCE);
-        addTetraJSBinding(event, "StatBarHelper", StatBarHelper.INSTANCE);
-        addTetraJSBinding(event, "DataManager", DataManager.instance);
-        addTetraJSBinding(event, "TetraJSUtils", TetraJSUtils.INSTANCE);
-        addTetraJSBinding(event, "ShowModelHelper", ShowModelHelper.INSTANCE);
-        addTetraJSBinding(event, "LangUtils", LangUtils.INSTANCE);
-        addTetraJSBinding(event, "SchematicUtils", SchematicUtils.INSTANCE);
-        addTetraJSBinding(event, "ItemModularHandheld", ItemModularHandheld.class);
-        CompatManager.registerCompatBindings((name, value) -> addTetraJSBinding(event, name, value));
+        event.add("TetraDynamicModularHelper", DynamicModularHelper.INSTANCE);
+        event.add("TetraStatBarHelper", StatBarHelper.INSTANCE);
+        event.add("TetraDataManager", DataManager.instance);
+        event.add("TetraShowModelHelper", ShowModelHelper.INSTANCE);
+        event.add("TetraLangUtils", LangUtils.INSTANCE);
+        event.add("TetraSchematicUtils", SchematicUtils.INSTANCE);
+        event.add("TetraItemModularHandheld", ItemModularHandheld.class);
+        event.add("TetraCustomRequirement", CustomRequirement.class);
+        event.add("TetraCustomCraftingEffectCondition", CustomRequirement.Condition.class);
+        event.add("TetraCustomCraftingEffect", CustomCraftingEffectOutcome.class);
+        CompatManager.registerCompatBindings(event::add);
     }
 
-    public static void addTetraJSBinding(BindingsEvent event, String name, Object value) {
-        event.add("TetraJS$" + name, value);
-    }
 
     @Override
     public void registerEvents() {

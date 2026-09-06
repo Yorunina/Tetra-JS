@@ -14,10 +14,14 @@
     "ModularBowItemMixin",
     "ModularCrossbowItemMixin",
     "WorkbenchScreenMixin",
-    "WorkbenchTileMixin"
+    "WorkbenchTileMixin",
+    "TetraModMixin",
+    "TransformationDeserializerMixin"
   ],
   "client": [
-    "ThrownModularItemRendererMixin"
+    "ThrownModularItemRendererMixin",
+    "ConfigSchematicDescriptionMixin",
+    "ModuleRequirementMixin"
   ],
   "injectors": {
     "defaultRequire": 1

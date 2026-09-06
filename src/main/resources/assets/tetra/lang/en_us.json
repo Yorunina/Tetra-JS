@@ -1,3 +1,4 @@
 {
-
+  "tetra.holo.material_reveal": "You need to have the crafting materials in your inventory",
+  "tetra.holo.module_requirement.module": "Module %s"
 }

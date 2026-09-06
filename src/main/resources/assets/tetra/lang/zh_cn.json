@@ -1,4 +1,6 @@
 {
     "tetra.module.extend_info.attribute": "属性",
-    "tetra.module.extend_info.attribute_modifier": "%s : %s"
+    "tetra.module.extend_info.attribute_modifier": "%s : %s",
+    "tetra.holo.material_reveal": "你需要在物品栏拥有制作材料",
+    "tetra.holo.module_requirement.module": "模块 %s"
 }

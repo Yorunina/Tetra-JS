@@ -2,6 +2,7 @@ package net.yiran.tetrajs.core.mixins;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.world.entity.player.Player;
 import net.yiran.tetrajs.kubejs.events.TetraJSEvents;
 import net.yiran.tetrajs.kubejs.events.WorkbenchTileUpdateSchematicListJS;
@@ -12,7 +13,6 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import se.mickelus.tetra.blocks.workbench.WorkbenchTile;
 import se.mickelus.tetra.blocks.workbench.gui.GuiSchematicList;
 import se.mickelus.tetra.blocks.workbench.gui.GuiSlotDetail;
@@ -78,9 +78,8 @@ public class GuiSlotDetailMixin {
     @Inject(method = "updateSchematicList",
             at = @At(value = "INVOKE",
                     target = "Lse/mickelus/tetra/blocks/workbench/gui/GuiSchematicList;setSchematics([Lse/mickelus/tetra/module/schematic/UpgradeSchematic;)V"),
-            locals = LocalCapture.CAPTURE_FAILHARD,
             cancellable = true)
-    private void updateSchematicList(Player player, WorkbenchTile tileEntity, String selectedSlot, CallbackInfo ci, CraftingContext context, UpgradeSchematic[] schematics) {
+    private void updateSchematicList(Player player, WorkbenchTile tileEntity, String selectedSlot, CallbackInfo ci, @Local(name = "schematics") UpgradeSchematic[] schematics) {
         WorkbenchTileUpdateSchematicListJS event = new WorkbenchTileUpdateSchematicListJS(player, tileEntity, selectedSlot, schematics);
         TetraJSEvents.WorkbenchTileUpdateSchematicList.post(event);
         UpgradeSchematic[] eventSchematics = event.schematicList == null

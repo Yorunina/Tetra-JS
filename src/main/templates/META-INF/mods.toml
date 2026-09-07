@@ -83,8 +83,8 @@ side = "BOTH"
 [[dependencies.${ mod_id }]]
 modId="tetra"
 mandatory=true
-versionRange="[0,)"
-ordering="NONE"
+versionRange="[6.17.0,)"
+ordering="AFTER"
 side="BOTH"
 [[dependencies.${ mod_id }]]
 modId="kubejs"

@@ -22,7 +22,17 @@
     "WorkbenchScreenMixin",
     "WorkbenchTileMixin",
     "TetraModMixin",
-    "TransformationDeserializerMixin"
+    "TransformationDeserializerMixin",
+    "tetrawear.DodgeMixin",
+    "tetrawear.PlayerEnergyMixin",
+    "tetrawear.EnergyAttackEffectMixin",
+    "tetrawear.EnergyDefensiveEffectMixin",
+    "tetrawear.EnergyMiningEffectMixin",
+    "tetrawear.MissedSwingDrainEnergyPacketMixin",
+    "tetrawear.EnergyHelperMixin",
+    "tetrawear.PlayerTemperatureMixin",
+    "tetrawear.TemperatureSystemMixin",
+    "tetrawear.StealthSystemMixin"
   ],
   "client": [
     "ThrownModularItemRendererMixin",

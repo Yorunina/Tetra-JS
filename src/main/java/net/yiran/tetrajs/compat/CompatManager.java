@@ -6,6 +6,7 @@ import net.minecraftforge.fml.ModList;
 import net.yiran.tetrajs.compat.curios.CuriosHelper;
 import net.yiran.tetrajs.compat.curios.builders.items.CuriosModularItemBuilder;
 import net.yiran.tetrajs.compat.curios.builders.items.DynamicCuriosModularItemBuilder;
+import net.yiran.tetrajs.compat.tetrawear.TetraWearHelper;
 import top.theillusivec4.curios.Curios;
 
 import java.util.function.BiConsumer;
@@ -24,5 +25,6 @@ public class CompatManager {
         if (CuriosLoaded) {
             register.accept("CuriosHelper", CuriosHelper.getInstance());
         }
+        register.accept("TetraWearHelper", TetraWearHelper.INSTANCE);
     }
 }

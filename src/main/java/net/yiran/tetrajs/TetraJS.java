@@ -15,6 +15,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.yiran.tetrajs.crafteffect.CustomCraftingEffectOutcome;
 import net.yiran.tetrajs.data.RequirementDataManager;
 import net.yiran.tetrajs.data.RequirementUpdateDataPacket;
+import net.yiran.tetrajs.construction.ConstructionNetwork;
 import net.yiran.tetrajs.kubejs.events.EnchantAspectRegisterEventJS;
 import net.yiran.tetrajs.kubejs.events.TetraJSEvents;
 import net.yiran.tetrajs.probejs.TetraProbePlugin;
@@ -70,6 +71,7 @@ public class TetraJS {
 
     public void onCommonSetup(final FMLCommonSetupEvent event) {
         NETWORK.registerPacket(RequirementUpdateDataPacket.class, RequirementUpdateDataPacket::new);
+        ConstructionNetwork.register();
         if (FMLEnvironment.dist == Dist.CLIENT) {
             TetraJSClient.itemClientInit(items);
         }

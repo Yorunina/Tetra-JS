@@ -117,6 +117,9 @@ public final class ConstructionJob {
             SoundType sound = placed.get(0).state().getSoundType();
             level.playSound(null, player.blockPosition(), sound.getPlaceSound(), SoundSource.BLOCKS, sound.getVolume(), sound.getPitch());
             ConstructionUndoHistory.add(player, level, placed);
+            if (!player.getAbilities().instabuild && stack.getItem() instanceof IModularItem modularItem) {
+                modularItem.tickProgression(player, stack, placed.size());
+            }
         }
         return !placed.isEmpty();
     }

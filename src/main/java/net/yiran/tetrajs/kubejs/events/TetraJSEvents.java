@@ -13,6 +13,7 @@ public interface TetraJSEvents {
     EventHandler WorkbenchTileUpdateSchematicList = GROUP.client("workbenchTileUpdateSchematicList", () -> WorkbenchTileUpdateSchematicListJS.class);
     EventHandler HammerBlockCraftConsumeTool = GROUP.server("hammerBlockCraftConsumeTool", () -> HammerBlockCraftConsumeToolJS.class).hasResult();
     EventHandler CreateArrow = GROUP.server("createArrow", () -> CreateArrowEventJS.class).extra(Extra.STRING);
+    EventHandler CreateThrownItem = GROUP.server("createThrownItem", () -> CreateThrownItemEventJS.class);
     EventHandler Dodge = GROUP.server("dodge", () -> DodgeEventJS.class).hasResult();
     EventHandler EnergyDrain = GROUP.server("energyDrain", () -> EnergyDrainEventJS.class).hasResult();
     EventHandler EnergyExhaust = GROUP.server("energyExhaust", () -> EnergyExhaustEventJS.class);

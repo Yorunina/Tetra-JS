@@ -335,6 +335,7 @@ Tetra JS 内置了一套图纸需求（`CraftingRequirement`）和合成效果�
 | `tetrajs:all_improvement` | `improvement`, `level` | 工具任意模块拥有该改进。`level <= 0` 表示任意等级 |
 | `tetrajs:biome` | `biome` | 工作台所在群系 |
 | `tetrajs:dimension` | `dimension` | 所在维度 |
+| `tetrajs:enchantment` | `enchantment`, `level` | 物品拥有指定附魔，等级至少为 `level`，默认 1 |
 | `tetrajs:height` | `min`, `max` | 工作台 Y 坐标，默认 `-99` ~ `333` |
 | `tetrajs:see_sky` | 无 | 工作台上方直到世界顶都没有挡运动的方块 |
 | `tetrajs:time` | `time` | `day` 或 `night` |

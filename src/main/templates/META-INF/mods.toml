@@ -89,7 +89,7 @@ side="BOTH"
 [[dependencies.${ mod_id }]]
 modId="chestcavity"
 mandatory=false
-versionRange="[2.16.7,)"
+versionRange="*"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.${ mod_id }]]

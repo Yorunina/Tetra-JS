@@ -16,6 +16,7 @@ public interface TetraJSEvents {
     EventHandler CreateThrownItem = GROUP.server("createThrownItem", () -> CreateThrownItemEventJS.class);
     EventHandler Dodge = GROUP.server("dodge", () -> DodgeEventJS.class).hasResult();
     EventHandler EnergyDrain = GROUP.server("energyDrain", () -> EnergyDrainEventJS.class).hasResult();
+    EventHandler ItemBroken = GROUP.server("item_broken", () -> ItemBrokenEventJS.class);
     EventHandler EnergyExhaust = GROUP.server("energyExhaust", () -> EnergyExhaustEventJS.class);
     EventHandler TemperatureUpdate = GROUP.server("temperatureUpdate", () -> TemperatureUpdateEventJS.class);
     EventHandler StealthVisibility = GROUP.server("stealthVisibility", () -> StealthVisibilityEventJS.class);

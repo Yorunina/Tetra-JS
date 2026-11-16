@@ -15,6 +15,7 @@
     "ItemEffectMixin",
     "ItemModuleMajorInfiniteMixin",
     "ItemModularHandheldMixin",
+    "ItemStackMixin",
     "ItemModuleMajorMixin",
     "MaterialImprovementDataMixin",
     "ModularBowItemMixin",

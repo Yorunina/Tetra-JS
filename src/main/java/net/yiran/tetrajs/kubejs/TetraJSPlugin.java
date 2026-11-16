@@ -30,6 +30,7 @@ public class TetraJSPlugin extends KubeJSPlugin {
         RegistryInfo.ITEM.addType("TetraJS:CrossBowModularItem", CrossBowModularItemBuilder.class, CrossBowModularItemBuilder::new);
         RegistryInfo.ITEM.addType("TetraJS:EquipModularItem", EquipModularItemBuilder.class, EquipModularItemBuilder::new);
         CompatManager.registerCompatItemBuilder(RegistryInfo.ITEM);
+        CompatManager.registerCompatProviders();
     }
 
     @Override

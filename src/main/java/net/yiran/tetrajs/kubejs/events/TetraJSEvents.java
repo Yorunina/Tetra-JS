@@ -19,4 +19,5 @@ public interface TetraJSEvents {
     EventHandler EnergyExhaust = GROUP.server("energyExhaust", () -> EnergyExhaustEventJS.class);
     EventHandler TemperatureUpdate = GROUP.server("temperatureUpdate", () -> TemperatureUpdateEventJS.class);
     EventHandler StealthVisibility = GROUP.server("stealthVisibility", () -> StealthVisibilityEventJS.class);
+    EventHandler ChargedAbilityRegister = GROUP.startup("registerChargedAbility", () -> ChargedAbilityRegisterEventJS.class);
 }

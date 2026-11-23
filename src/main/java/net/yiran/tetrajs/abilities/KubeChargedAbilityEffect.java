@@ -16,6 +16,7 @@ import java.util.Locale;
 public class KubeChargedAbilityEffect extends ChargedAbilityEffect {
     private final String key;
     private int priority;
+    private boolean overrideRiptide;
     private AvailabilityFunction availability;
     private PerformFunction perform;
 
@@ -64,6 +65,11 @@ public class KubeChargedAbilityEffect extends ChargedAbilityEffect {
         return this;
     }
 
+    public KubeChargedAbilityEffect setOverrideRiptide(boolean overrideRiptide) {
+        this.overrideRiptide = overrideRiptide;
+        return this;
+    }
+
     public KubeChargedAbilityEffect availableWhen(AvailabilityFunction availability) {
         this.availability = availability;
         return this;
@@ -80,6 +86,10 @@ public class KubeChargedAbilityEffect extends ChargedAbilityEffect {
 
     public int getPriority() {
         return priority;
+    }
+
+    public boolean overridesRiptide() {
+        return overrideRiptide;
     }
 
     @Override

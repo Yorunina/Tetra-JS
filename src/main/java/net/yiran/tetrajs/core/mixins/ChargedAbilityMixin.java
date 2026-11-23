@@ -1,5 +1,6 @@
 package net.yiran.tetrajs.core.mixins;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -32,6 +33,16 @@ public class ChargedAbilityMixin {
             return original;
         }
         return ChargedAbilityRegistry.hasAvailable((ItemModularHandheld) (Object) this, stack) ? 72000 : original;
+    }
+
+    @ModifyExpressionValue(method = "m_5551_", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/world/entity/player/Player;m_20070_()Z", ordinal = 1))
+    private boolean tetrajs$overrideRiptide(boolean original, ItemStack stack) {
+        if (!original) {
+            return false;
+        }
+        return ChargedAbilityRegistry.findRiptideOverride(
+                (ItemModularHandheld) (Object) this, stack) == null;
     }
 
     @Inject(method = "handleChargedAbility", at = @At("HEAD"), cancellable = true)

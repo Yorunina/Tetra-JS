@@ -36,6 +36,14 @@ public final class ChargedAbilityRegistry {
         return findAvailable(item, stack) != null;
     }
 
+    public static ChargedAbilityEffect findRiptideOverride(ItemModularHandheld item, ItemStack stack) {
+        return abilities.stream()
+                .filter(KubeChargedAbilityEffect::overridesRiptide)
+                .filter(ability -> ability.isAvailable(item, stack))
+                .findFirst()
+                .orElse(null);
+    }
+
     public static boolean perform(Player player, InteractionHand hand, LivingEntity target, BlockPos block,
                                   Vec3 hit, int chargedTicks) {
         ItemStack stack = player.getItemInHand(hand);

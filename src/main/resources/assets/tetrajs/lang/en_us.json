@@ -3,6 +3,7 @@
   "tetrajs.holo.biome_requirement": "You need to be in the [ %s ] biome to unlock the crafting of this item",
   "tetrajs.holo.multiblock_requirement": "You need to have the following blocks within a [ %sx%sx%s ] area centered on the workstation",
   "tetrajs.holo.entities_requirement": "You need to have the following entities within a [ %sx%sx%s ] area centered on the workstation",
+  "tetrajs.holo.enchantment_requirement": "The item must have the [ %s ] enchantment at level [ %s ] or higher",
   "tetrajs.holo.height_requirement": "Crafting unlocked when workbench height is between [ %s ~ %s ]",
   "tetrajs.holo.potion_effect_requirement": "You must have at least [ %s level %s for %s seconds ] potion effect to unlock",
   "tetrajs.holo.weather_requirement": "The current dimension must be in [ %s ] weather to unlock the crafting of this item",

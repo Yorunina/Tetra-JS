@@ -3,6 +3,7 @@
   "tetrajs.holo.biome_requirement": "你需要在[ %s ]群系来解锁该项目的制作",
   "tetrajs.holo.multiblock_requirement": "你需要在以加工站为中心的%sx%sx%s区域有以下方块",
   "tetrajs.holo.entities_requirement": "你需要在以加工站为中心的%sx%sx%s区域有以下实体",
+  "tetrajs.holo.enchantment_requirement": "物品需要拥有[ %s ]附魔，等级至少为[ %s ]",
   "tetrajs.holo.potion_effect_requirement": "你需要拥有至少 [ %s lv%s %s秒 ] 的药水效果解锁",
   "tetrajs.holo.height_requirement": "当加工站高度位于[ %s ~ %s ]之间时解锁该项目制作",
   "tetrajs.holo.weather_requirement": "当前维度处于[ %s ]天气解锁该项目的制作",

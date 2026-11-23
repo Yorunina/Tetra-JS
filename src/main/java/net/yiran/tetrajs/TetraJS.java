@@ -97,6 +97,7 @@ public class TetraJS {
         registerBoth("tetrajs:custom", CustomRequirement.class);
         registerBoth("tetrajs:dimension", DimensionRequirement.class);
         registerBoth("tetrajs:entities", EntitiesRequirement.class);
+        registerBoth("tetrajs:enchantment", EnchantmentRequirement.class);
         registerBoth("tetrajs:height", HeightRequirement.class);
         registerBoth("tetrajs:moon_phase", MoonPhaseRequirement.class);
         registerBoth("tetrajs:mbd", MultiblockRequirement.class);

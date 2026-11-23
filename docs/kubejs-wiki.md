@@ -335,6 +335,7 @@ Tetra JS 内置了一套图纸需求（`CraftingRequirement`）和合成效果�
 | `tetrajs:all_improvement` | `improvement`, `level` | 工具任意模块拥有该改进。`level <= 0` 表示任意等级 |
 | `tetrajs:biome` | `biome` | 工作台所在群系 |
 | `tetrajs:dimension` | `dimension` | 所在维度 |
+| `tetrajs:enchantment` | `enchantment`, `level` | 物品拥有指定附魔，等级至少为 `level`，默认 1 |
 | `tetrajs:height` | `min`, `max` | 工作台 Y 坐标，默认 `-99` ~ `333` |
 | `tetrajs:see_sky` | 无 | 工作台上方直到世界顶都没有挡运动的方块 |
 | `tetrajs:time` | `time` | `day` 或 `night` |
@@ -775,10 +776,29 @@ TetraJSEvents.registerStatBar(event => {
 - `setMin` / `setMax` / `setSegmented` / `setSplit` / `setInverted`
 - `setLabelGetter('percentageLabel')`
 - `addIntegerTooltip` / `addOneDecimalTooltip` / `addTowDecimalTooltip` / `addAbbreviateTooltip`
-- `addExtendGetter`、`setShowCheck`
+- `addExtendGetter` / `addExtendedGetter`、`setTooltipGetter`、`setShowCheck`、`addStatIndicator`
 
-语言键默认是 `tetra.stats.<effect或attribute>`，tooltip 是这个键加 `.tooltip`。
+语言键默认是 `tetra.stats.<effect或attribute>`，tooltip 是这个键加 `.tooltip`；扩展 tooltip 继续使用同一键加 `_extended`。`addExtendedGetter` 的值会按扩展语言键的 `%s` 顺序传入。也可以用 `TetraStatBarHelper.newTooltipGetter('tetra.stats.example.tooltip')` 明确构造并通过 `setTooltipGetter` 使用扩展 getter。
 
+指示器复用 Tetra 6.17.0 的 `GuiStatIndicator` API：
+
+```js
+let tooltip = TetraStatBarHelper.newTooltipGetter('tetra.stats.stabilizing.tooltip')
+  .addIntegerTooltip(TetraStatBarHelper.effectLevel('stabilizing'))
+  .addExtendedGetter(TetraStatBarHelper.effectEfficiency('stabilizing'))
+  .build()
+let indicator = TetraStatBarHelper.newStatIndicator(
+  0, 0, 'tetra.stats.stabilizing', 0,
+  TetraStatBarHelper.effectLevel('stabilizing'), tooltip
+).withShowRequirements(TetraStatBarHelper.effectLevel('stabilizing'))
+
+TetraJSEvents.registerStatBar(event => {
+  event.registerEffectBar('stabilizing')
+    .addStatIndicator(indicator)
+})
+```
+
+默认构造器使用 Tetra glyphs 纹理；需要自定义纹理时使用带 `width`、`height`、`ResourceLocation`/资源路径的 `newStatIndicator` 重载。
 自己拼 getter：
 
 ```js

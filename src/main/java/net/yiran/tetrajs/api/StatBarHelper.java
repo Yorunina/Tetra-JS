@@ -1,10 +1,12 @@
 package net.yiran.tetrajs.api;
 
 import dev.latvian.mods.kubejs.typings.Info;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.yiran.tetrajs.util.StatGetterWrapper;
 import net.yiran.tetrajs.util.TooltipGetterMultiValueWrapper;
 import se.mickelus.tetra.effect.ItemEffect;
+import se.mickelus.tetra.gui.stats.bar.GuiStatIndicator;
 import se.mickelus.tetra.gui.stats.getter.*;
 
 import java.util.ArrayList;
@@ -89,7 +91,27 @@ public class StatBarHelper {
         return new StatGetterWrapper(statGetter, showCheck);
     }
 
-    @Info("获取一个TooltipGetter的Builder，用法与注册StatBar一样")
+    @Info("按Tetra 6.17.0 API创建统计条指示器，返回值可传给StatBarBuilder.addStatIndicator")
+    public GuiStatIndicator newStatIndicator(int x, int y, String label, int textureIndex,
+                                             IStatGetter statGetter, ITooltipGetter tooltipGetter) {
+        return new GuiStatIndicator(x, y, label, textureIndex, statGetter, tooltipGetter);
+    }
+
+    @Info("按自定义纹理参数创建统计条指示器")
+    public GuiStatIndicator newStatIndicator(int x, int y, String label, int width, int height,
+                                             ResourceLocation texture, IStatGetter statGetter,
+                                             ITooltipGetter tooltipGetter) {
+        return new GuiStatIndicator(x, y, label, width, height, texture, statGetter, tooltipGetter);
+    }
+
+    @Info("按资源路径创建统计条指示器，返回值可继续调用withShowRequirements")
+    public GuiStatIndicator newStatIndicator(int x, int y, String label, int width, int height,
+                                             String texture, IStatGetter statGetter,
+                                             ITooltipGetter tooltipGetter) {
+        return newStatIndicator(x, y, label, width, height, new ResourceLocation(texture), statGetter, tooltipGetter);
+    }
+
+    @Info("获取一个TooltipGetter的Builder；扩展文本使用langKey + _extended")
     public TooltipGetterBuilder newTooltipGetter(String langKey) {
         return new TooltipGetterBuilder(langKey);
     }
@@ -129,6 +151,10 @@ public class StatBarHelper {
         public TooltipGetterBuilder addExtendGetter(IStatGetter statGetter) {
             extendStatGetters.add(statGetter);
             return this;
+        }
+
+        public TooltipGetterBuilder addExtendedGetter(IStatGetter statGetter) {
+            return addExtendGetter(statGetter);
         }
 
         public ITooltipGetter build() {

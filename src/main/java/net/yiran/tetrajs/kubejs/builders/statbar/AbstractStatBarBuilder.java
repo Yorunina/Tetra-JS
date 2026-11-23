@@ -22,6 +22,16 @@ public abstract class AbstractStatBarBuilder<THIS extends IStatBarBuilder<?>> im
     public List<IStatFormat> statFormats = new ArrayList<>();
     public List<GuiStatIndicator> statIndicators = new ArrayList<>();
     public StatGetterWrapper.ShowCheck showCheck;
+    public ITooltipGetter tooltipGetter;
+
+    public THIS setTooltipGetter(ITooltipGetter tooltipGetter) {
+        this.tooltipGetter = tooltipGetter;
+        return (THIS) this;
+    }
+
+    public ITooltipGetter getTooltipGetter() {
+        return tooltipGetter;
+    }
 
     public THIS setShowCheck(StatGetterWrapper.ShowCheck showCheck) {
         this.showCheck = showCheck;
@@ -53,6 +63,10 @@ public abstract class AbstractStatBarBuilder<THIS extends IStatBarBuilder<?>> im
     public THIS addExtendGetter(IStatGetter statGetter) {
         extendStatGetters.add(statGetter);
         return (THIS) this;
+    }
+
+    public THIS addExtendedGetter(IStatGetter statGetter) {
+        return addExtendGetter(statGetter);
     }
 
     public THIS addStatIndicator(GuiStatIndicator statIndicator) {
@@ -150,12 +164,12 @@ public abstract class AbstractStatBarBuilder<THIS extends IStatBarBuilder<?>> im
         GuiStatBar result = new GuiStatBar(
                 0, 0, 59, getKey(),
                 min, max, segmented, split, inverted,
-                showCheck == null ? statGetter : new StatGetterWrapper(statGetter, showCheck), labelGetter, new TooltipGetterMultiValueWrapper(
+                showCheck == null ? statGetter : new StatGetterWrapper(statGetter, showCheck), labelGetter, tooltipGetter == null ? new TooltipGetterMultiValueWrapper(
                 getLangKey(),
                 statGetters.toArray(new IStatGetter[0]),
                 statFormats.toArray(new IStatFormat[0]),
                 extendStatGetters.toArray(new IStatGetter[0])
-        ));
+        ) : tooltipGetter);
         result.setIndicators(statIndicators.toArray(new GuiStatIndicator[0]));
         return result;
     }

@@ -143,6 +143,8 @@ dependencies {
     modImplementation("curse.maven:architectury-api-419699:5137938")
     modImplementation("curse.maven:kubejs-238086:5853326")
     modImplementation("curse.maven:probejs-legacy-956446:6773935")
+    //chestcavity compatibility uses the locally built artifact during rapid iteration
+    compileOnly files('../chestcavity/build/libs/chestcavity-1.20.1-2.16.7.jar')
     //mixin
     modCompileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.3"))
     modImplementation("io.github.llamalad7:mixinextras-forge:0.5.3")

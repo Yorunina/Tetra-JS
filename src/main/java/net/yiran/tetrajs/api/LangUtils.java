@@ -45,15 +45,15 @@ public class LangUtils {
         return json;
     }
     public JsonObject addEffect(JsonObject json, ItemEffect effect, String name, String tooltip, String tooltip_short,String tooltip_extended) {
-        json.addProperty("tetra.stat." + effect.getKey(), name);
+        json.addProperty("tetra.stats." + effect.getKey(), name);
         if(tooltip != null) {
-            json.addProperty("tetra.stat." + effect.getKey() + ".tooltip", tooltip);
+            json.addProperty("tetra.stats." + effect.getKey() + ".tooltip", tooltip);
         }
         if (tooltip_short!=null) {
-            json.addProperty("tetra.stat." + effect.getKey() + ".tooltip_short", tooltip_short);
+            json.addProperty("tetra.stats." + effect.getKey() + ".tooltip_short", tooltip_short);
         }
         if (tooltip_extended!=null) {
-            json.addProperty("tetra.stat." + effect.getKey() + ".tooltip_extended", tooltip_extended);
+            json.addProperty("tetra.stats." + effect.getKey() + ".tooltip_extended", tooltip_extended);
         }
         return json;
     }

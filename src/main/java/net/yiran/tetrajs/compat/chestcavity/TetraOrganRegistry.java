@@ -25,8 +25,9 @@ public final class TetraOrganRegistry {
         if (effect == null) {
             throw new IllegalArgumentException("Unknown Tetra effect: " + effectId);
         }
-        MAPPINGS.computeIfAbsent(item, ignored -> new ArrayList<>())
-                .add(new Mapping(effect, score, (float) multiplier, (float) base));
+        List<Mapping> mappings = MAPPINGS.computeIfAbsent(item, ignored -> new ArrayList<>());
+        mappings.removeIf(mapping -> mapping.effect().equals(effect) && mapping.score().equals(score));
+        mappings.add(new Mapping(effect, score, (float) multiplier, (float) base));
     }
 
     static List<Mapping> getMappings(ResourceLocation itemId) {

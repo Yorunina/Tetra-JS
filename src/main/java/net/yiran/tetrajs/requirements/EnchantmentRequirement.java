@@ -41,6 +41,7 @@ public class EnchantmentRequirement implements CraftingRequirement, CraftingEffe
     }
 
     private boolean hasEnchantment(ItemStack stack) {
+        if (level <= 0) return false;
         Enchantment resolved = resolveEnchantment();
         return resolved != null && stack.getEnchantmentLevel(resolved) >= level;
     }

@@ -21,11 +21,12 @@ import se.mickelus.tetra.gui.stats.bar.GuiStatIndicator;
 import se.mickelus.tetra.gui.stats.data.StatIndicatorStore;
 
 /**
- * Bridges stat indicators defined as resources ({@code assets/<namespace>/stat_indicators/}) into
- * stat bars that already exist in Tetra, including the tool level bars that are created in code.
+ * Bridges stat indicators defined under {@code assets/tetra/stat_indicators/} into stat bars that
+ * already exist in Tetra, including the tool level bars that are created in code.
  * <p>
- * Requests are queued and applied whenever a {@code WorkbenchStatsGui} is constructed, so scripts may
- * call the API at any time, even before the client resource manager or the stat bars are ready.
+ * Client-side only. Requests are queued and applied whenever a {@code WorkbenchStatsGui} is constructed,
+ * so scripts may call the API before the stat bars are ready. Resource changes require a client restart
+ * before they can be injected into existing bars.
  */
 public final class StatBarInjector {
 

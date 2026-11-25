@@ -39,7 +39,12 @@
   "client": [
     "ThrownModularItemRendererMixin",
     "ConfigSchematicDescriptionMixin",
-    "ModuleRequirementMixin"
+    "ModuleRequirementMixin",
+    "WorkbenchStatsGuiAccessor",
+    "GuiStatBarAccessor",
+    "StatIndicatorStoreAccessor",
+    "GuiStatBarToolAccessor",
+    "WorkbenchStatsGuiInitMixin"
   ],
   "injectors": {
     "defaultRequire": 1

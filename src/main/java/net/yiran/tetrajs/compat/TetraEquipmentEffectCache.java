@@ -41,22 +41,37 @@ public final class TetraEquipmentEffectCache {
 
     /** Equal levels prefer the projectile, then main hand, off hand, Curios and armor. */
     public Map<String, EffectSourceSnapshot> getStrongestSources(LivingEntity entity, ItemStack projectileStack) {
+        Map<String, EffectSourceSnapshot> sources = new LinkedHashMap<>();
+        getEffectSources(entity, projectileStack).forEach((key, group) -> {
+            for (EffectSourceSnapshot source : group.getSources()) {
+                EffectSourceSnapshot previous = sources.get(key);
+                if (previous == null || source.getLevel() > previous.getLevel()) {
+                    sources.put(key, source);
+                }
+            }
+        });
+        return sources;
+    }
+
+    /** Groups all sources by effect, with the projectile followed by the owner's equipment. */
+    public Map<String, EffectGroup> getEffectSources(LivingEntity entity, ItemStack projectileStack) {
         List<ModularItemSnapshot> items = new ArrayList<>();
         addSnapshot(items, projectileStack, "projectile");
         addSnapshot(items, entity.getMainHandItem(), "mainhand");
         addSnapshot(items, entity.getOffhandItem(), "offhand");
         items.addAll(get(entity).getItems());
+        return groupEffects(items);
+    }
 
-        Map<String, EffectSourceSnapshot> sources = new LinkedHashMap<>();
+    private static Map<String, EffectGroup> groupEffects(List<ModularItemSnapshot> items) {
+        Map<String, EffectGroup> effects = new LinkedHashMap<>();
         for (ModularItemSnapshot item : items) {
             for (EffectSnapshot effect : item.getEffects()) {
-                EffectSourceSnapshot previous = sources.get(effect.getKey());
-                if (previous == null || effect.getLevel() > previous.getLevel()) {
-                    sources.put(effect.getKey(), new EffectSourceSnapshot(item, effect));
-                }
+                effects.computeIfAbsent(effect.getKey(), EffectGroup::new)
+                        .addSource(new EffectSourceSnapshot(item, effect));
             }
         }
-        return sources;
+        return effects;
     }
 
     public synchronized void invalidate(LivingEntity entity) {
@@ -102,14 +117,7 @@ public final class TetraEquipmentEffectCache {
 
         private EquipmentSnapshot(List<ModularItemSnapshot> items) {
             this.items = Collections.unmodifiableList(new ArrayList<>(items));
-            Map<String, EffectGroup> effects = new LinkedHashMap<>();
-            for (ModularItemSnapshot item : items) {
-                for (EffectSnapshot effect : item.getEffects()) {
-                    effects.computeIfAbsent(effect.getKey(), ignored -> new EffectGroup(effect.getKey()))
-                            .addSource(new EffectSourceSnapshot(item, effect));
-                }
-            }
-            this.effects = Collections.unmodifiableMap(effects);
+            this.effects = Collections.unmodifiableMap(groupEffects(items));
         }
 
         public List<ModularItemSnapshot> getItems() {

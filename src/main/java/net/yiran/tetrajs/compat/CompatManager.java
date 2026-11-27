@@ -2,6 +2,8 @@ package net.yiran.tetrajs.compat;
 
 import dev.latvian.mods.kubejs.registry.RegistryInfo;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModList;
 import net.yiran.tetrajs.compat.chestcavity.ChestCavityCompat;
 import net.yiran.tetrajs.compat.curios.CuriosHelper;
@@ -11,6 +13,7 @@ import net.yiran.tetrajs.compat.tetrawear.TetraWearHelper;
 import top.theillusivec4.curios.Curios;
 
 import java.util.function.BiConsumer;
+import java.util.List;
 
 public class CompatManager {
     public static boolean CuriosLoaded = ModList.get().isLoaded(Curios.MODID);
@@ -37,5 +40,12 @@ public class CompatManager {
             ChestCavityCompat.registerBindings(register);
         }
         register.accept("TetraWearHelper", TetraWearHelper.INSTANCE);
+    }
+
+    public static List<ItemStack> getCuriosModularItems(LivingEntity entity) {
+        if (!CuriosLoaded) {
+            return List.of();
+        }
+        return CuriosHelper.getInstance().getAllModularItemsInCurios(entity);
     }
 }

@@ -14,6 +14,9 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.yiran.tetrajs.crafteffect.CustomCraftingEffectOutcome;
 import net.yiran.tetrajs.abilities.ChargedAbilityRegistry;
+import net.yiran.tetrajs.compat.CompatManager;
+import net.yiran.tetrajs.compat.TetraEquipmentEffectCache;
+import net.yiran.tetrajs.compat.curios.CuriosEquipmentEffectCacheEvents;
 import net.yiran.tetrajs.data.RequirementDataManager;
 import net.yiran.tetrajs.data.RequirementUpdateDataPacket;
 import net.yiran.tetrajs.construction.ConstructionNetwork;
@@ -68,6 +71,10 @@ public class TetraJS {
         ModEventBus.addListener(EventPriority.LOWEST, this::onCommonSetup);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         MinecraftForge.EVENT_BUS.register(RequirementDataManager.instance);
+        MinecraftForge.EVENT_BUS.register(TetraEquipmentEffectCache.INSTANCE);
+        if (CompatManager.CuriosLoaded) {
+            MinecraftForge.EVENT_BUS.register(new CuriosEquipmentEffectCacheEvents());
+        }
         CreativeTabHandler.init();
     }
 

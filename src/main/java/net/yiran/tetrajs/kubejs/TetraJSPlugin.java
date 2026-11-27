@@ -8,6 +8,7 @@ import dev.latvian.mods.rhino.util.wrap.TypeWrappers;
 import net.minecraftforge.common.ToolAction;
 import net.yiran.tetrajs.api.*;
 import net.yiran.tetrajs.compat.CompatManager;
+import net.yiran.tetrajs.compat.TetraEquipmentEffectCache;
 import net.yiran.tetrajs.kubejs.builders.items.*;
 import net.yiran.tetrajs.kubejs.events.TetraJSEvents;
 import net.yiran.tetrajs.util.NbtSlotData;
@@ -59,6 +60,7 @@ public class TetraJSPlugin extends KubeJSPlugin {
         event.add("TetraCustomRequirement", CustomRequirement.class);
         event.add("TetraCustomCraftingEffectCondition", CustomRequirement.Condition.class);
         event.add("TetraCustomCraftingEffect", CustomCraftingEffectOutcome.class);
+        event.add("TetraEquipmentEffectCache", TetraEquipmentEffectCache.INSTANCE);
         CompatManager.registerCompatBindings(event::add);
     }
 
